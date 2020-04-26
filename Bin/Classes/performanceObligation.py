@@ -22,8 +22,9 @@ class performanceObligation:
         if(self.propotionOfTotalStandAlonePrice != None):
             return self.propotionOfTotalStandAlonePrice
         else:
-            return self.calculatePropotionOfTotalStandAlonePrice(self,totalStandAlonePrice)
+            return self.calculatePropotionOfTotalStandAlonePrice(totalStandAlonePrice)
 
     def calculatePropotionOfTotalStandAlonePrice(self,totalStandAlonePrice):
         self.propotionOfTotalStandAlonePrice=(self.standAlonePriceForPerformanceObligation/totalStandAlonePrice)*100
+        return self.propotionOfTotalStandAlonePrice
 

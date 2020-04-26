@@ -17,7 +17,7 @@ class contract:
         self.ammount=ammount
 
     def getTransactionPrice(self):
-        if(self.transctionPrice != None):
+        if(self.transactionPrice != None):
             return self.transactionPrice
         else:
             return self.calculateTransactionPrice()
@@ -28,4 +28,11 @@ class contract:
         else:
             self.transactionPrice=self.ammount
         return self.transactionPrice
+
+    def getContactDuration(self):
+        if(self.duration == None):
+            print("Error! Unable to find Duration")
+            return None
+        else:
+            return self.duration
 
