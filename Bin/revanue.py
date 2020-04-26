@@ -19,4 +19,5 @@ for i in range(numberOfPerformanceObligations):
     printData.timeIntervals()
     paymentMethord: int = int(input("Enter The Number:"))
 print(perfomansObligations)
-print(standAlonePrice)
+print(transActionPrice)
+

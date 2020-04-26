@@ -1,18 +1,9 @@
-from Bin.Classes.contract import contract
-from Bin.Support.supportfunctions import trueFalse
+from Bin.Support.getInput import setContractData, setPerformanceObligations
 
-contractor:str = input('Enter the Name of The Contractor')
-contractee:str = input('Enter the Name of The Contractee')
-duration: int = int(input('Enter the contract dureation in months:'))
-print('Is the payment due in propotionate manner ?')
-intervalPayment:bool =bool(trueFalse('Enter true or false:'))
-print(intervalPayment)
-if(intervalPayment):
-    interval:int =int(input('Enter the time interval betwenn tow payments by number of months:'))
-    ammount:float =float(input("Enter the ammout payble per time interval"))
-    newContract = contract(contractor,contractee,duration,intervalPayment,interval,ammount)
-else:
-    ammount:float = float(input('Enter the ammount payable under contract:'))
-    newContract = contract(contractor,contractee,duration,intervalPayment,None,ammount)
+newContract = setContractData()
+performanceObligations = setPerformanceObligations(newContract)
 
-print(newContract.getTransactionPrice())
+totStandalonePrice = sum(c.standAlonePriceForPerformanceObligation for c in performanceObligations)
+transactionPrice = newContract.getTransactionPrice()
+print(transactionPrice)
+print(totStandalonePrice)
