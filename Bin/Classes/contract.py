@@ -17,7 +17,7 @@ class contract:
         self.ammount=ammount
 
     def getTransactionPrice(self):
-        if(self.transctionPrice != None):
+        if(self.transactionPrice != None):
             return self.transactionPrice
         else:
             return self.calculateTransactionPrice()
