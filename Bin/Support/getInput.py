@@ -6,7 +6,7 @@ from Bin.Support.supportfunctions import trueFalse
 def setContractData():
     contractor: str = input('Enter the Name of The Contractor')
     contractee: str = input('Enter the Name of The Contractee')
-    duration: int = int(input('Enter the contract dureation in months:'))
+    duration: int = int(input('Enter the contract duration in months:'))
     print('Is the payment due in propotionate manner ?')
     intervalPayment: bool = bool(trueFalse('Enter true or false:'))
     print(intervalPayment)
@@ -19,6 +19,7 @@ def setContractData():
         newContract = contract(contractor, contractee, duration, intervalPayment, None, ammount)
     return newContract
 
+
 def setPerformanceObligations(newContract):
     performanceObligations = []
     numberOfPerformanceObligations: int = int(input('Number of performance Obligations:'))
@@ -30,7 +31,8 @@ def setPerformanceObligations(newContract):
         if (tempRecurent):
             tempRecurentInterval = int(input('Enter the recurrent interval in months'))
             newPerformanceObligation = performanceObligation(tempName, tempStandAlonePrice, tempRecurent,
-                                                             tempRecurentInterval, None, newContract.getContactDuration())
+                                                             tempRecurentInterval, None,
+                                                             newContract.getContactDuration())
         else:
             tempWhenToPerform = int(input('When to Performa the aggred performance obligation'))
             newPerformanceObligation = performanceObligation(tempName, tempStandAlonePrice, tempRecurent, None,
