@@ -6,6 +6,7 @@ class contract:
     interval: int
     ammount: float
     transactionPrice: float = None
+    totStandAlonePrice: float = None
 
     def __init__(self, contractor, contractee, duration, intervalPayment, interval, ammount):
         self.contractor = contractor
@@ -35,3 +36,14 @@ class contract:
             return None
         else:
             return self.duration
+
+    def getTotalStandAlonePrice(self, performanceObligations):
+        if self.totStandAlonePrice is None:
+            return self.calculateTotalStandalonePrice(performanceObligations)
+        else:
+            return self.totStandAlonePrice
+
+    def calculateTotalStandalonePrice(self, performanceObligations):
+        self.totStandAlonePrice = sum(c.standAlonePriceForPerformanceObligation for c in
+                                      performanceObligations)
+        return self.totStandAlonePrice

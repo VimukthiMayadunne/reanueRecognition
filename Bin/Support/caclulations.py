@@ -2,7 +2,7 @@ from Bin.Classes.contract import contract
 from Bin.Classes.performanceObligation import performanceObligation
 
 def calculatePropotionOfToalStandaloePrice(newContract, performanceObligations):
-    totStandAlonePrice = sum(c.standAlonePriceForPerformanceObligation for c in performanceObligations)
+    totStandAlonePrice = newContract.getTotalStandAlonePrice(performanceObligations)
     transactionPrice = newContract.getTransactionPrice()
     print(transactionPrice)
     print(totStandAlonePrice)
