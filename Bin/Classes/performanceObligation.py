@@ -1,30 +1,41 @@
 class performanceObligation:
-    name:str
-    standAlonePrice:float
-    recurent:bool
-    recurentIntrval:int
-    whenToPerforme:int
-    propotionOfTotalStandAlonePrice:float = None
-    standAlonePriceForPerformanceObligation:float =None
+    name: str
+    standAlonePrice: float
+    recurrent: bool
+    recurrentInterval: int
+    whenToPerform: int
+    proportionOfTotalStandAlonePrice: float = None
+    standAlonePriceForPerformanceObligation: float = None
+    actualPrice: float = None
 
-    def __init__(self,name,standAlonePrice,recurent,recurentInteval,whenToPerforme,duration):
-        self.name=name
-        self.standAlonePrice=standAlonePrice
-        self.recurent=recurent
-        if(recurent):
-            self.recurentIntrval=recurentInteval
-            self.standAlonePriceForPerformanceObligation=self.standAlonePrice*(duration/recurentInteval)
+    def __init__(self, name, standAlonePrice, recurrent, recurentInteval, whenToPerforme, duration):
+        self.name = name
+        self.standAlonePrice = standAlonePrice
+        self.recurrent = recurrent
+        if recurrent:
+            self.recurrentInterval = recurentInteval
+            self.standAlonePriceForPerformanceObligation = self.standAlonePrice * (duration / recurentInteval)
         else:
-            self.whenToPerforme=whenToPerforme
-            self.standAlonePriceForPerformanceObligation=standAlonePrice
+            self.whenToPerform = whenToPerforme
+            self.standAlonePriceForPerformanceObligation = standAlonePrice
 
-    def getPropotionOfTotalStandAlonePrice(self,totalStandAlonePrice):
-        if(self.propotionOfTotalStandAlonePrice != None):
-            return self.propotionOfTotalStandAlonePrice
+    def getPropotionOfTotalStandAlonePrice(self, totalStandAlonePrice):
+        if (self.proportionOfTotalStandAlonePrice != None):
+            return self.proportionOfTotalStandAlonePrice
         else:
             return self.calculatePropotionOfTotalStandAlonePrice(totalStandAlonePrice)
 
-    def calculatePropotionOfTotalStandAlonePrice(self,totalStandAlonePrice):
-        self.propotionOfTotalStandAlonePrice=(self.standAlonePriceForPerformanceObligation/totalStandAlonePrice)*100
-        return self.propotionOfTotalStandAlonePrice
+    def calculatePropotionOfTotalStandAlonePrice(self, totalStandAlonePrice):
+        self.proportionOfTotalStandAlonePrice = (self.standAlonePriceForPerformanceObligation /
+                                                 totalStandAlonePrice)
+        return self.proportionOfTotalStandAlonePrice
 
+    def getActualPrice(self, transactionPrice):
+        if self.actualPrice is None:
+            return self.calculateActualPrice(transactionPrice)
+        else:
+            return self.actualPrice
+
+    def calculateActualPrice(self, transactionPrice):
+        self.actualPrice = transactionPrice * self.proportionOfTotalStandAlonePrice
+        return self.actualPrice
